@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Number Guess & Multiplication Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h3 {
+      color: #2e8b57;
+    }
+    h3.lose {
+      color: #b22222;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      display: inline-block;
+      text-align: left;
+      margin-top: 0;
+    }
+    li {
+      padding: 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  let userInput = prompt("Enter any number from 1 to 6 to see the table of that number:");
+  userInput = Number(userInput);
+
+  if (userInput < 1 || userInput > 6 || isNaN(userInput)) {
+    document.write("Please enter a valid number between 1 and 6.");
+  } else {
+    let computerNumber;
+    if (Math.random() < 0.5) {  // Changed win chance to 50%
+      computerNumber = userInput;
+    } else {
+      computerNumber = Math.ceil(Math.random() * 6);
+    }
+
+    if (userInput === computerNumber) {
+      document.write(`<h3>🎉 Congratulations! You Win!</h3>`);
+    } else {
+      document.write(`<h3 class="lose">😢 You Lose!</h3>`);
+    }
+
+    document.write(`<p>You chose: <b>${userInput}</b><br>Computer chose: <b>${computerNumber}</b></p>`);
+
+    document.write(`<h4>Multiplication Table of ${userInput}:</h4>`);
+    document.write("<ul>");
+    for (let i = 1; i <= 10; i++) {
+      document.write(`<li>${userInput} × ${i} = ${userInput * i}</li>`);
+    }
+    document.write("</ul>");
+  }
+</script>
+
+</body>
+</html>
